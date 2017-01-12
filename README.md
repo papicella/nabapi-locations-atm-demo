@@ -21,11 +21,11 @@ NAB_API_KEY=YOUR-NAB-API-KEY
 - Run as shown below
 
 ```
-pasapicella@pas-macbook:~/piv-projects/NABApi-fx-demo$ mvn spring-boot:run
+pasapicella@pas-macbook:~/piv-projects/nabapi-locations-atm-demo$ mvn spring-boot:run
 ....
 
-2017-01-05 14:21:50.765  INFO 61966 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
-2017-01-05 14:21:50.770  INFO 61966 --- [           main] c.p.n.a.fx.demo.NabapiFxDemoApplication  : Started NabapiFxDemoApplication in 2.256 seconds (JVM running for 4.076)
+2017-01-12 16:10:01.206  INFO 87485 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-01-12 16:10:01.209  INFO 87485 --- [           main] .a.l.d.NabapiLocationsAtmDemoApplication : Started NabapiLocationsAtmDemoApplication in 2.503 seconds (JVM running for 8.004)
 
 ```
 
