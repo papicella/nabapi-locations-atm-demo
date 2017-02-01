@@ -39,7 +39,7 @@ public class LocationsController
         logger.info("Invoking LocationsController POST search action");
         logger.info(nabApiKey.toString());
 
-        String response = Utils.getLocations(nabApiKey.toString(), swLat, neLat, neLng, swLng);
+        String response = Utils.getLocations(nabApiKey.getNabApiKey(), swLat, neLat, neLng, swLng);
 
         logger.info(response);
 
