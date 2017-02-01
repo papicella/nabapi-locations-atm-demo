@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>NAB API Locations (ATM's) Page</title>
+    <title>NAB API ATM Locations Page</title>
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -85,11 +85,38 @@
 
         <div class="space-left bs-example">
             <div class="page-header">
-                <h1>Spring Boot <small>NAB API Locations (ATM's)</small></h1>
+                <h1>Spring Boot <small>NAB API ATM Locations</small></h1>
             </div>
         </div>
 
-        <div id="map" style="width: 800px; height: 500px"></div>
+        <div class="col-xs-12">
+            <div class="col-xs-8">
+                <div id="map" style="width: 100%"></div>
+            </div>
+            <div class="col-xs-4">
+                <form th:action="@{/search}" method="post">
+                    <div class="form-group">
+                        <label for="swLat">swLat (South-West latitude coordinates) </label>
+                        <input type="text" class="form-control" id="swLat" name="swLat" placeholder="swLat" />
+                    </div>
+                    <div class="form-group">
+                        <label for="neLat">neLat (North-East latitude coordinates) </label>
+                        <input type="text" class="form-control" id="neLat" name="neLat" placeholder="neLat" />
+                    </div>
+                    <div class="form-group">
+                        <label for="neLng">neLng (North-East longitude coordinates) </label>
+                        <input type="text" class="form-control" id="neLng" name="neLng" placeholder="neLng" />
+                    </div>
+                    <div class="form-group">
+                        <label for="swLng">swLng (South-West longitude coordinates) </label>
+                        <input type="text" class="form-control" id="swLng" name="swLng" placeholder="swLng" />
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="searchpressed" value="searchpressed">
+                        <span class="glyphicon glyphicon-search"></span> Find ATM's
+                    </button>
+                </form>
+            </div>
+        </div>
 
         <script type="text/javascript">
             Number.prototype.toRad = function() {
@@ -168,10 +195,15 @@
                         map: map
                     });
 
-                    console.log('NELatLong = ' + NELatLong.getPosition().lat());
-                    console.log('SELatLong = ' + SELatLong.getPosition().lat());
-                    console.log('NWLatLong = ' + NWLatLong.getPosition().lng());
-                    console.log('SWLatLong = ' + SWLatLong.getPosition().lng());
+                    console.log('swLat = ' + SWLatLong.getPosition().lat());
+                    console.log('neLat = ' + NELatLong.getPosition().lat());
+                    console.log('neLng = ' + NELatLong.getPosition().lng());
+                    console.log('swLng = ' + SWLatLong.getPosition().lng());
+
+                    document.getElementById('swLat').value = SWLatLong.getPosition().lat();
+                    document.getElementById('neLat').value = NELatLong.getPosition().lat();
+                    document.getElementById('neLng').value = NELatLong.getPosition().lng();
+                    document.getElementById('swLng').value = SWLatLong.getPosition().lng();
 
                     var rectangle = new google.maps.Rectangle({
                         strokeColor: '#FF0000',
@@ -188,6 +220,17 @@
                         }
                     });
                 });
+            }
+            else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, $scope.map.getCenter());
+            }
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.');
             }
 
         </script>
