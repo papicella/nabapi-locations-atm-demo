@@ -24,12 +24,10 @@ public class Utils
                                       String swLat,
                                       String neLat,
                                       String neLng,
-                                      String swLng) throws Exception
+                                      String swLng, String loc) throws Exception
     {
         RestTemplate restTemplate = new RestTemplate();
-        String uri = "https://api.developer.nab.com.au/v2/locations?locationType=atm&searchCriteria=geo&swLat=%s&swLng=%s&neLat=%s&neLng=%s&fields=extended&v=1";
-
-        logger.info(String.format(uri, swLat, swLng, neLat, neLng));
+        String uri = "https://api.developer.nab.com.au/v2/locations?locationType=%s&searchCriteria=geo&swLat=%s&swLng=%s&neLat=%s&neLng=%s&fields=extended&v=1";
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-nab-key", nabApiKey);
@@ -37,7 +35,9 @@ public class Utils
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         HttpEntity<String> response = null;
 
-        response = restTemplate.exchange(String.format(uri, swLat, swLng, neLat, neLng), HttpMethod.GET, entity, String.class);
+        response = restTemplate.exchange(String.format(uri, loc, swLat, swLng, neLat, neLng), HttpMethod.GET, entity, String.class);
+
+        logger.info("REST call : " + String.format(uri, loc, swLat, swLng, neLat, neLng));
 
         Map<String, Object> jsonMap = parser.parseMap(response.getBody());
         Map locationsMap = (Map) jsonMap.get("locationSearchResponse");
@@ -50,8 +50,8 @@ public class Utils
         for (Object item: locationsList)
         {
             Map m = (Map) item;
-            Location loc = new Location();
-            loc.setApiStructType((String)m.get("apiStructType"));
+            Location location = new Location();
+            location.setApiStructType((String)m.get("apiStructType"));
 
             Map m2 = (Map) m.get("atm");
             Atm atm = new Atm();
@@ -66,9 +66,9 @@ public class Utils
             atm.setKey((String)m2.get("key"));
             atm.setLocation((String)m2.get("location"));
 
-            loc.setAtm(atm);
+            location.setAtm(atm);
 
-            returnLocationList.add(loc);
+            returnLocationList.add(location);
         }
 
         logger.info(returnLocationList);

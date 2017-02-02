@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="navbar-brand" href="https://developer.nab.com.au//">
+                            <a class="navbar-brand" href="https://developer.nab.com.au/">
                                 <img src="images/nab-small.png"
                                      th:src="@{images/nab-small.png}"
                                      alt="NAB" width="28" height="28"
@@ -97,19 +97,25 @@
                 <form th:action="@{/search}" method="post">
                     <div class="form-group">
                         <label for="swLat">swLat (South-West latitude coordinates) </label>
-                        <input type="text" class="form-control" id="swLat" name="swLat" placeholder="swLat" />
+                        <input type="text" class="form-control input-sm" id="swLat" name="swLat" placeholder="swLat" />
                     </div>
                     <div class="form-group">
                         <label for="neLat">neLat (North-East latitude coordinates) </label>
-                        <input type="text" class="form-control" id="neLat" name="neLat" placeholder="neLat" />
+                        <input type="text" class="form-control input-sm" id="neLat" name="neLat" placeholder="neLat" />
                     </div>
                     <div class="form-group">
                         <label for="neLng">neLng (North-East longitude coordinates) </label>
-                        <input type="text" class="form-control" id="neLng" name="neLng" placeholder="neLng" />
+                        <input type="text" class="form-control input-sm" id="neLng" name="neLng" placeholder="neLng" />
                     </div>
                     <div class="form-group">
                         <label for="swLng">swLng (South-West longitude coordinates) </label>
-                        <input type="text" class="form-control" id="swLng" name="swLng" placeholder="swLng" />
+                        <input type="text" class="form-control input-sm" id="swLng" name="swLng" placeholder="swLng" />
+                    </div>
+                    <div class="form-group">
+                        <label for="loc">Location Type</label>
+                        <select name="loc" id="loc" placeholder="loc" class="form-control input-sm">
+                            <option value="atm" selected="selected">ATM</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary" name="searchpressed" value="searchpressed">
                         <span class="glyphicon glyphicon-search"></span> Find ATM's

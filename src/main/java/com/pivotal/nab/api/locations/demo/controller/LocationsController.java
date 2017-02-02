@@ -37,12 +37,13 @@ public class LocationsController
              @RequestParam(value="neLat") String neLat,
              @RequestParam(value="neLng") String neLng,
              @RequestParam(value="swLng") String swLng,
+             @RequestParam(value="loc") String loc,
              Model model) throws Exception
     {
         logger.info("Invoking LocationsController POST search action");
         logger.info(nabApiKey.toString());
 
-        List<Location> locationList = Utils.getLocations(nabApiKey.getNabApiKey(), swLat, neLat, neLng, swLng);
+        List<Location> locationList = Utils.getLocations(nabApiKey.getNabApiKey(), swLat, neLat, neLng, swLng, loc);
 
         model.addAttribute("locationList", locationList);
 
