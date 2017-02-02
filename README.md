@@ -1,5 +1,7 @@
 <h1> NAB API ATM Locations demo for Cloud Foundry </h1>
 
+![alt tag](https://dl.dropboxusercontent.com/u/15829935/platform-demos/images/piv-nabapi-3.png)
+
 <h3> Run Locally </h3>
 
 - Clone as shown below

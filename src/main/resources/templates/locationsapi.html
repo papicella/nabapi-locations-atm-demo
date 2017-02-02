@@ -118,6 +118,34 @@
             </div>
         </div>
 
+        <div th:if="${locationList != null}">
+            <div class="col-xs-12">
+                <br />
+                <table id="example" class="table table-hover table-bordered table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>address1</th>
+                        <th>state</th>
+                        <th>postcode</th>
+                        <th>hours</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="location : ${locationList}">
+                        <td th:text="${location.apiStructType}"></td>
+                        <td th:text="${location.atm.description}"></td>
+                        <td th:text="${location.atm.address1}"></td>
+                        <td th:text="${location.atm.state}"></td>
+                        <td th:text="${location.atm.postcode}"></td>
+                        <td th:text="${location.atm.hours}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <script type="text/javascript">
             Number.prototype.toRad = function() {
                 return this * Math.PI / 180;
@@ -154,7 +182,7 @@
                     console.log('longitude = ' + position.coords.longitude);
 
                     //var pointA = new google.maps.LatLng(-37.813628, 144.963058);   // Square center
-                    var radius = 0.5;                                      // 1km
+                    var radius = 1;                                      // 1km
 
                     var mapOpt = {
                         mapTypeId: google.maps.MapTypeId.TERRAIN,

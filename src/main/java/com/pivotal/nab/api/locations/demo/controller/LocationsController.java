@@ -1,6 +1,7 @@
 package com.pivotal.nab.api.locations.demo.controller;
 
 import com.pivotal.nab.api.locations.demo.Utils;
+import com.pivotal.nab.api.locations.demo.beans.Location;
 import com.pivotal.nab.api.locations.demo.beans.NabApiKey;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class LocationsController
@@ -39,9 +42,9 @@ public class LocationsController
         logger.info("Invoking LocationsController POST search action");
         logger.info(nabApiKey.toString());
 
-        String response = Utils.getLocations(nabApiKey.getNabApiKey(), swLat, neLat, neLng, swLng);
+        List<Location> locationList = Utils.getLocations(nabApiKey.getNabApiKey(), swLat, neLat, neLng, swLng);
 
-        logger.info(response);
+        model.addAttribute("locationList", locationList);
 
         return "locationsapi";
     }
