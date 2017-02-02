@@ -10,12 +10,14 @@ public class Atm
     private Double latitude;
     private Double longitude;
     private String hours;
+    private String key;
+    private String location;
 
     public Atm ()
     {
     }
 
-    public Atm(String description, String address1, String suburb, String state, String postcode, Double latitude, Double longitude, String hours) {
+    public Atm(String description, String address1, String suburb, String state, String postcode, Double latitude, Double longitude, String hours, String key, String location) {
         this.description = description;
         this.address1 = address1;
         this.suburb = suburb;
@@ -24,6 +26,24 @@ public class Atm
         this.latitude = latitude;
         this.longitude = longitude;
         this.hours = hours;
+        this.key = key;
+        this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getDescription() {
@@ -98,9 +118,10 @@ public class Atm
                 ", suburb='" + suburb + '\'' +
                 ", state='" + state + '\'' +
                 ", postcode='" + postcode + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 ", hours='" + hours + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
 }

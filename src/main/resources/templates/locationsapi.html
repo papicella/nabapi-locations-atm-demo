@@ -125,6 +125,8 @@
                     <thead>
                     <tr>
                         <th>Type</th>
+                        <th>Key</th>
+                        <th>Location</th>
                         <th>Description</th>
                         <th>address1</th>
                         <th>state</th>
@@ -135,6 +137,8 @@
                     <tbody>
                     <tr th:each="location : ${locationList}">
                         <td th:text="${location.apiStructType}"></td>
+                        <td th:text="${location.atm.key}"></td>
+                        <td th:text="${location.atm.location}"></td>
                         <td th:text="${location.atm.description}"></td>
                         <td th:text="${location.atm.address1}"></td>
                         <td th:text="${location.atm.state}"></td>
@@ -182,7 +186,7 @@
                     console.log('longitude = ' + position.coords.longitude);
 
                     //var pointA = new google.maps.LatLng(-37.813628, 144.963058);   // Square center
-                    var radius = 1;                                      // 1km
+                    var radius = 0.5;                                      // 1/2 a km
 
                     var mapOpt = {
                         mapTypeId: google.maps.MapTypeId.TERRAIN,

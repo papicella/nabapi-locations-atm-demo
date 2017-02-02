@@ -63,6 +63,8 @@ public class Utils
             atm.setHours((String)m2.get("hours"));
             atm.setLatitude((Double)m2.get("latitude"));
             atm.setLongitude((Double)m2.get("longitude"));
+            atm.setKey((String)m2.get("key"));
+            atm.setLocation((String)m2.get("location"));
 
             loc.setAtm(atm);
 
