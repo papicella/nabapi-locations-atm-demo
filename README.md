@@ -1,5 +1,8 @@
 <h1> NAB API ATM Locations demo for Cloud Foundry </h1>
 
+The following example is a Spring Boot Application using the NAB API from https://developer.nab.com.au/ to consume the 
+Get Locations GEO API. To run this demo follow the steps below. To push to Pivotal Cloud Foundry follow the steps further down
+
 ![alt tag](https://dl.dropboxusercontent.com/u/15829935/platform-demos/images/piv-nabapi-3.png)
 
 <h3> Run Locally </h3>
